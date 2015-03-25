@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
+        id="com.tonikorin.cordova.plugin.autostart" 
+        version="1.0.0">
+
+    <name>Autostart</name>
+
+    <description>
+        The application will automatically be started after the every boot. 
+        You can enable or disabled the autosart function in your app.
+    </description>
+
+    <keywords>autostart</keywords>
+
+    <license>Apache 2.0</license>
+
+    <author>Toni Korin</author>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <!-- js -->
+    <js-module src="www/auto-start.js" name="AutoStart">
+        <clobbers target="cordova.plugins.autoStart" />
+    </js-module>
+	
+    <!-- android -->
+    <platform name="android">
+	
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AutoStart" >
+                <param name="android-package"
+                       value="com.tonikorin.cordova.plugin.autostart.AutoStart"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver
+                android:name="com.tonikorin.cordova.plugin.autostart.StartAppAtBootReceiver">
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+            </receiver>
+
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        </config-file>
+
+        <source-file src="src/android/StartAppAtBootReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/AutoStart.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+    </platform>
+
+</plugin>
