@@ -7,7 +7,7 @@
 
     <description>
         The application will automatically be started after the every boot. 
-        You can enable or disabled the autosart function in your app.
+        You can enable or disable the autosart function in your app.
     </description>
 
     <keywords>autostart</keywords>
