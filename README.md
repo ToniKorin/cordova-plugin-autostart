@@ -11,13 +11,13 @@ This [Cordova][cordova] plugin will automatically start your app after the every
 cordova.plugins.autoStart.enable();
 ```
 ### Disable the automatic startup after the boot
-This is the default action if you have ever called the "enable" function.
+This is the default action if you have never called the "enable" function.
 ```javascript
 cordova.plugins.autoStart.disable();
 ```
 
 ## Installation
-The plugin can either be installed from git repository, from local file system through the [Command-line Interface][CLI]. Or cloud based through [PhoneGap Build][PGB].
+The plugin can either be installed from git repository, from local file system through the [Command-line Interface][CLI] or cloud based through [PhoneGap Build][PGB].
 
 ### Local development environment
 From master:
@@ -45,12 +45,6 @@ cordova plugin rm com.tonikorin.cordova.plugin.autostart
 Add the following xml line to your config.xml:
 ```xml
 <gap:plugin name="com.tonikorin.cordova.plugin.autostart" version="1.0.0" source="plugins.cordova.io"/>
-```
-
-## Removing the Plugin from your project
-
-```
-cordova plugin rm com.tonikorin.cordova.plugin.autostart
 ```
 
 ## License
