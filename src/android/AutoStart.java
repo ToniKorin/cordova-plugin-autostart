@@ -25,7 +25,6 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.util.Log;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -63,7 +62,6 @@ public class AutoStart extends CordovaPlugin {
 
     private void setAutoStart(boolean enabled) {
 
-        Log.d("setAutoStart", String.valueOf(enabled));
         SharedPreferences sp = cordova.getActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         if (enabled) {
