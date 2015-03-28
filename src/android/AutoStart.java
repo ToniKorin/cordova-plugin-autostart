@@ -50,10 +50,10 @@ public class AutoStart extends CordovaPlugin {
     public boolean execute(String action, JSONArray args,
             CallbackContext callback) throws JSONException {
 
-        if ( action.equalsIgnoreCase("enable") ) {
+        if (action.equalsIgnoreCase("enable")) {
             setAutoStart(true);
             return true;
-        } else if ( action.equalsIgnoreCase("disable") ) {
+        } else if (action.equalsIgnoreCase("disable")) {
             setAutoStart(false);
             return true;
         }
@@ -64,7 +64,7 @@ public class AutoStart extends CordovaPlugin {
 
         SharedPreferences sp = cordova.getActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        if ( enabled ) {
+        if (enabled) {
             editor.putBoolean(ENABLED, true);
             editor.putString(CLASS_NAME, cordova.getActivity().getLocalClassName());
         } else {

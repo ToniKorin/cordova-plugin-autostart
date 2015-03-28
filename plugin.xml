@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
         id="com.tonikorin.cordova.plugin.autostart" 
-        version="1.0.2">
+        version="1.0.1">
 
     <name>Autostart</name>
 
@@ -40,7 +40,6 @@
                 android:name="com.tonikorin.cordova.plugin.autostart.StartAppAtBootReceiver">
                 <intent-filter>
                     <action android:name="android.intent.action.BOOT_COMPLETED" />
-                    <action android:name="android.intent.action.USER_PRESENT" />
                 </intent-filter>
             </receiver>
 
