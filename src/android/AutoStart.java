@@ -28,11 +28,12 @@ import org.json.JSONException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.ComponentName;
 
 public class AutoStart extends CordovaPlugin {
     
     public static final String PREFS = "autostart";
-    public static final String ENABLED = "enabled";
     public static final String CLASS_NAME = "class";
 
     /**
@@ -50,10 +51,10 @@ public class AutoStart extends CordovaPlugin {
     public boolean execute(String action, JSONArray args,
             CallbackContext callback) throws JSONException {
 
-        if (action.equalsIgnoreCase("enable")) {
+        if ( action.equalsIgnoreCase("enable") ) {
             setAutoStart(true);
             return true;
-        } else if (action.equalsIgnoreCase("disable")) {
+        } else if ( action.equalsIgnoreCase("disable") ) {
             setAutoStart(false);
             return true;
         }
@@ -62,14 +63,19 @@ public class AutoStart extends CordovaPlugin {
 
     private void setAutoStart(boolean enabled) {
 
-        SharedPreferences sp = cordova.getActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        if (enabled) {
-            editor.putBoolean(ENABLED, true);
+        Context context = cordova.getActivity().getApplicationContext();
+        int componentState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+        if ( enabled ) { 
+            componentState = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+            // Store the class name of your activity for AppStarter
+            SharedPreferences sp = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
             editor.putString(CLASS_NAME, cordova.getActivity().getLocalClassName());
-        } else {
-            editor.putBoolean(ENABLED, false);
+            editor.commit();  
         }
-        editor.commit();
+        // Enable or Disable BootCompletedReceiver
+        ComponentName receiver = new ComponentName(context, BootCompletedReceiver.class);
+        PackageManager pm = context.getPackageManager();
+        pm.setComponentEnabledSetting(receiver, componentState, PackageManager.DONT_KILL_APP);
     }
 }

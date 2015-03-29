@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
         id="com.tonikorin.cordova.plugin.autostart" 
-        version="1.0.1">
+        version="1.1.0">
 
     <name>Autostart</name>
 
@@ -37,20 +37,27 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver
-                android:name="com.tonikorin.cordova.plugin.autostart.StartAppAtBootReceiver">
+                android:name="com.tonikorin.cordova.plugin.autostart.BootCompletedReceiver" android:enabled="false">>
                 <intent-filter>
                     <action android:name="android.intent.action.BOOT_COMPLETED" />
                 </intent-filter>
             </receiver>
-
+            <receiver
+                android:name="com.tonikorin.cordova.plugin.autostart.UserPresentReceiver" android:enabled="false">>
+                <intent-filter>
+                    <action android:name="android.intent.action.USER_PRESENT" />
+                </intent-filter>
+            </receiver>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
         </config-file>
 
-        <source-file src="src/android/StartAppAtBootReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
-        <source-file src="src/android/AutoStart.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/BootCompletedReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/UserPresentReceiver.java"   target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/AppStarter.java"            target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/AutoStart.java"             target-dir="src/com/tonikorin/cordova/plugin/autostart" />
     </platform>
 
 </plugin>
