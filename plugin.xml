@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
         id="com.tonikorin.cordova.plugin.autostart" 
-        version="1.1.0">
+        version="1.2.0">
 
     <name>Autostart</name>
 
     <description>
-        The application will automatically be started after the every boot. 
-        You can enable or disable the autosart function in your app.
+        The application will be automatically started after the every boot and the automatic update of your application. 
+        You can enable or disable the autostart function in your app.
     </description>
 
     <keywords>autostart</keywords>
-
+	<repo>https://github.com/ToniKorin/cordova-plugin-autostart</repo>
     <license>Apache 2.0</license>
 
     <author>Toni Korin</author>
@@ -48,16 +48,23 @@
                     <action android:name="android.intent.action.USER_PRESENT" />
                 </intent-filter>
             </receiver>
+			<receiver
+                android:name="com.tonikorin.cordova.plugin.autostart.PackageReplacedReceiver" android:enabled="true">>
+                <intent-filter>
+                    <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                </intent-filter>
+            </receiver>
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
         </config-file>
 
-        <source-file src="src/android/BootCompletedReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
-        <source-file src="src/android/UserPresentReceiver.java"   target-dir="src/com/tonikorin/cordova/plugin/autostart" />
-        <source-file src="src/android/AppStarter.java"            target-dir="src/com/tonikorin/cordova/plugin/autostart" />
-        <source-file src="src/android/AutoStart.java"             target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/BootCompletedReceiver.java" 	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/UserPresentReceiver.java"   	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+		<source-file src="src/android/PackageReplacedReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/AppStarter.java"            	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/AutoStart.java"             	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
     </platform>
 
 </plugin>

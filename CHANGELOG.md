@@ -1,4 +1,7 @@
 ## ChangeLog
+#### Version 1.2.0 (6.05.2015)
+- Added new Broadcast receiver for MY_PACKAGE_REPLACED. This is needed to cover situation when the system kills your app during the (Google Play) auto-update of your app. If you don't need this function just use the version 1.1.0.
+
 #### Version 1.1.0 (29.03.2015)
 - Added separate Broadcast receiver for BOOT_COMPLETED and USER_PRESENT and then dynamically modified the static receiver configuration.
 

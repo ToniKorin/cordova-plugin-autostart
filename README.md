@@ -1,26 +1,25 @@
-Autostart plugin
-====================
-This [Cordova][cordova] plugin will automatically start your app after the every boot. You can enable or disable the autostart function in your app. The plugin is also compatible with [PhoneGap Build][PGB].
+# Autostart plugin #
+This [Cordova][cordova] plugin will start automatically your __Android__ app after the every boot or the auto-update of your application. You can enable or disable the autostart function in your app. The plugin is also compatible with [PhoneGap Build][PGB].
 
-## Supported Platforms
+## Supported Platforms ##
 - __Android__
 
-## Usage
+## Usage ##
 
-### Enable the automatic startup after the boot  
+#### Enable the automatic startup after the boot  ####
 ```javascript
 cordova.plugins.autoStart.enable();
 ```
-### Disable the automatic startup after the boot
+#### Disable the automatic startup after the boot ####
 This is the default action if you have never called the "enable" function.
 ```javascript
 cordova.plugins.autoStart.disable();
 ```
 
-## Installation
+## Installation ##
 The plugin can either be installed from git repository, from local file system through the [Command-line Interface][CLI] or cloud based through [PhoneGap Build][PGB].
 
-### Local development environment
+#### Local development environment ####
 From master:
 ```bash
 # ~~ from master branch ~~
@@ -34,7 +33,7 @@ cordova plugin add com.tonikorin.cordova.plugin.autostart --searchpath path
 or to use the latest stable version:
 ```bash
 # ~~ stable version ~~
-cordova plugin add com.tonikorin.cordova.plugin.autostart@1.1.0
+cordova plugin add com.tonikorin.cordova.plugin.autostart@1.2.0
 ```
 
 To remove the plug-in, run the following command:
@@ -42,17 +41,16 @@ To remove the plug-in, run the following command:
 cordova plugin rm com.tonikorin.cordova.plugin.autostart
 ```
 
-### PhoneGap Build
+#### PhoneGap Build ####
 Add the following xml line to your config.xml:
 ```xml
-<gap:plugin platform="android" name="com.tonikorin.cordova.plugin.autostart" version="1.1.0" source="plugins.cordova.io"/>
+<gap:plugin platform="android" name="com.tonikorin.cordova.plugin.autostart" version="1.2.0" source="plugins.cordova.io"/>
 ```
 
-## History
-
+## History ##
 Check the [Change Log][changelog].
 
-## License
+## License ##
 
 This software is released under the [Apache 2.0 License][apache2_license].
 
