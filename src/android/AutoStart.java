@@ -65,18 +65,18 @@ public class AutoStart extends CordovaPlugin {
 
         Context context = cordova.getActivity().getApplicationContext();
         int componentState;
-   		SharedPreferences sp = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();		
-		if ( enabled ) { 
+        SharedPreferences sp = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        if ( enabled ) { 
             componentState = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
             // Store the class name of your main activity for AppStarter
             editor.putString(CLASS_NAME, cordova.getActivity().getLocalClassName()); 
         }
-		else{
-			componentState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-			editor.remove(CLASS_NAME);
-		}
-		editor.commit();	
+        else{
+            componentState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+            editor.remove(CLASS_NAME);
+        }
+        editor.commit();	
         // Enable or Disable BootCompletedReceiver
         ComponentName bootCompletedReceiver = new ComponentName(context, BootCompletedReceiver.class);
         PackageManager pm = context.getPackageManager();
