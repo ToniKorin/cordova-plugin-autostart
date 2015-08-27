@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
         id="com.tonikorin.cordova.plugin.autostart" 
-        version="1.2.0">
+        version="1.2.1">
 
     <name>Autostart</name>
 
@@ -11,7 +11,7 @@
     </description>
 
     <keywords>autostart</keywords>
-	<repo>https://github.com/ToniKorin/cordova-plugin-autostart</repo>
+    <repo>https://github.com/ToniKorin/cordova-plugin-autostart</repo>
     <license>Apache 2.0</license>
 
     <author>Toni Korin</author>
@@ -24,10 +24,10 @@
     <js-module src="www/auto-start.js" name="AutoStart">
         <clobbers target="cordova.plugins.autoStart" />
     </js-module>
-	
+
     <!-- android -->
     <platform name="android">
-	
+
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AutoStart" >
                 <param name="android-package"
@@ -48,7 +48,7 @@
                     <action android:name="android.intent.action.USER_PRESENT" />
                 </intent-filter>
             </receiver>
-			<receiver
+            <receiver
                 android:name="com.tonikorin.cordova.plugin.autostart.PackageReplacedReceiver" android:enabled="true">
                 <intent-filter>
                     <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
@@ -62,7 +62,7 @@
 
         <source-file src="src/android/BootCompletedReceiver.java" 	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
         <source-file src="src/android/UserPresentReceiver.java"   	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
-		<source-file src="src/android/PackageReplacedReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+        <source-file src="src/android/PackageReplacedReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
         <source-file src="src/android/AppStarter.java"            	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
         <source-file src="src/android/AutoStart.java"             	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
     </platform>

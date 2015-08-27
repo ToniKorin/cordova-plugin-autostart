@@ -33,7 +33,7 @@ cordova plugin add com.tonikorin.cordova.plugin.autostart --searchpath path
 or to use the latest stable version:
 ```bash
 # ~~ stable version ~~
-cordova plugin add com.tonikorin.cordova.plugin.autostart@1.2.0
+cordova plugin add com.tonikorin.cordova.plugin.autostart@1.2.1
 ```
 
 To remove the plug-in, run the following command:
@@ -44,7 +44,7 @@ cordova plugin rm com.tonikorin.cordova.plugin.autostart
 #### PhoneGap Build ####
 Add the following xml line to your config.xml:
 ```xml
-<gap:plugin platform="android" name="com.tonikorin.cordova.plugin.autostart" version="1.2.0" source="plugins.cordova.io"/>
+<gap:plugin platform="android" name="com.tonikorin.cordova.plugin.autostart" version="1.2.1" source="plugins.cordova.io"/>
 ```
 
 ## History ##
