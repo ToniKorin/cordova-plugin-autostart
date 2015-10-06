@@ -44,7 +44,7 @@ cordova plugin rm com.tonikorin.cordova.plugin.autostart
 #### PhoneGap Build ####
 Add the following xml line to your config.xml:
 ```xml
-<gap:plugin platform="android" name="com.tonikorin.cordova.plugin.autostart" version="1.3.0" source="npm"/>
+<gap:plugin platform="android" name="cordova-plugin-autostart" version="1.3.0" source="npm"/>
 ```
 
 ## History ##
