@@ -47,6 +47,10 @@ Add the following xml line to your config.xml:
 <gap:plugin platform="android" name="cordova-plugin-autostart" version="2.0.0" source="npm"/>
 ```
 
+## Remarks ##
+1. Installation to the SD card will prevent the automatic start of your app after the boot. See more details from [here][stackoverflow_1].
+2. During the boot your app may start before it has no network connectivity. Your app have to take care of it e.g. using the cordova-plugin-network-information. 
+
 ## History ##
 Check the [Change Log][changelog].
 
@@ -62,3 +66,4 @@ This software is released under the [Apache 2.0 License][apache2_license].
 [PGB_plugin]: https://build.phonegap.com/plugins/490
 [changelog]: https://github.com/ToniKorin/cordova-plugin-autostart/blob/master/CHANGELOG.md
 [apache2_license]: http://opensource.org/licenses/Apache-2.0
+[stackoverflow_1]: http://stackoverflow.com/questions/9556944/broadcastreceiver-not-working-when-app-is-installed-on-sd-card
