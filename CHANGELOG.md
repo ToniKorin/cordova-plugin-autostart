@@ -1,4 +1,7 @@
 ## ChangeLog
+#### Version 1.1.2 (30.12.2015)
+- Android namespace added for VS2015 compatibility
+
 #### Version 2.0.0 (6.10.2015)
 - Moved plugin to npm.
 
