@@ -13,10 +13,6 @@ public class AppStarter {
     public static final int BYPASS_USERPRESENT_MODIFICATION = -1;
     
     public void run(Context context, Intent intent, int componentState) {
-	this.run(context, intent, componentState, false);
-    }
-
-    public void run(Context context, Intent intent, int componentState, boolean bootCompleted) {
         // Enable or Disable UserPresentReceiver (or bypass the modification)
         //Log.d("Cordova AppStarter", "UserPresentReceiver component, new state:" + String.valueOf(componentState));
         if( componentState != BYPASS_USERPRESENT_MODIFICATION ) {
@@ -36,9 +32,7 @@ public class AppStarter {
             serviceIntent.setClassName(context, packageName + "." + className);
             serviceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             serviceIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	    if (bootCompleted) {
-              serviceIntent.putExtra("cordova_autostart", true);
-            }
+            serviceIntent.putExtra("cordova_autostart", true);
             context.startActivity(serviceIntent);
         }
     }
