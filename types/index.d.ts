@@ -15,3 +15,11 @@ export interface AutoStartInterface {
     enable  ():never;
     disable ():never;
 }
+/**
+ *
+ * */
+export declare var cordova : {
+    plugins:{
+        autoStart : AutoStartInterface
+    }
+};
