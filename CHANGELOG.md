@@ -1,5 +1,9 @@
 ## ChangeLog
-#### Version 1.1.2 (30.12.2015)
+#### Version 2.1.0 (27.1.2018)
+- Indication of automatic startup
+- Improved documentation
+
+#### Version 2.0.1 (30.12.2015)
 - Android namespace added for VS2015 compatibility
 
 #### Version 2.0.0 (6.10.2015)

@@ -36,7 +36,7 @@ public class AppStarter {
             serviceIntent.setClassName(context, packageName + "." + className);
             serviceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             serviceIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	          if (onAutostart) {
+            if (onAutostart) {
               serviceIntent.putExtra("cordova_autostart", true);
             }
             context.startActivity(serviceIntent);

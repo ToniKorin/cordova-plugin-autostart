@@ -6,7 +6,7 @@ This [Cordova][cordova] plugin will start automatically your __Android__ app aft
 
 ## Usage ##
 
-#### Enable the automatic startup after the boot  ####
+#### Enable the automatic startup after the boot ####
 ```javascript
 cordova.plugins.autoStart.enable();
 ```
@@ -15,6 +15,14 @@ This is the default action if you have never called the "enable" function.
 ```javascript
 cordova.plugins.autoStart.disable();
 ```
+
+#### Indication of automatic startup ####
+If the automatic startup has occured, the Android intent includes the attribute "cordova_autostart" with value true. See more instructions to utilize it at related plugins.
+
+## Related plugins ##
+- [cordova-plugin-intent][plugin-intent] to check out the "cordova_autostart" from extras of Android intent, if your app has automatically started. See more details from [here][stackoverflow_2]. 
+- [cordova-android-movetasktoback][plugin-movetasktoback] to move your app to background 
+- [cordova-plugin-background-mode][plugin-background-mode] to keep your app running
 
 ## Installation ##
 The plugin can either be installed from git repository, from local file system through the [Command-line Interface][CLI] or cloud based through [PhoneGap Build][PGB].
@@ -33,7 +41,7 @@ cordova plugin add cordova-plugin-autostart --searchpath path
 or to use the latest stable version:
 ```bash
 # ~~ stable version ~~
-cordova plugin add cordova-plugin-autostart@2.0.1
+cordova plugin add cordova-plugin-autostart@2.1.0
 ```
 
 To remove the plug-in, run the following command:
@@ -44,7 +52,7 @@ cordova plugin rm cordova-plugin-autostart
 #### PhoneGap Build ####
 Add the following xml line to your config.xml:
 ```xml
-<gap:plugin platform="android" name="cordova-plugin-autostart" version="2.0.1" source="npm"/>
+<gap:plugin platform="android" name="cordova-plugin-autostart" version="2.1.0" source="npm"/>
 ```
 
 ## Remarks ##
@@ -63,7 +71,11 @@ This software is released under the [Apache 2.0 License][apache2_license].
 [cordova]: https://cordova.apache.org
 [CLI]: http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface
 [PGB]: http://docs.build.phonegap.com/en_US/index.html
-[PGB_plugin]: https://build.phonegap.com/plugins/490
+[PGB_plugin]: https://build.phonegap.com/
 [changelog]: https://github.com/ToniKorin/cordova-plugin-autostart/blob/master/CHANGELOG.md
 [apache2_license]: http://opensource.org/licenses/Apache-2.0
 [stackoverflow_1]: http://stackoverflow.com/questions/9556944/broadcastreceiver-not-working-when-app-is-installed-on-sd-card
+[stackoverflow_2]: https://stackoverflow.com/questions/39218893/get-extras-in-cordova-app
+[plugin-intent]: https://github.com/napolitano/cordova-plugin-intent
+[plugin-movetasktoback]: https://github.com/mayflower/cordova-android-movetasktoback
+[plugin-background-mode]: https://github.com/katzer/cordova-plugin-background-mode

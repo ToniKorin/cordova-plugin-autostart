@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-autostart",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "\r\n        The application will be automatically started after the every boot and the automatic update of your application. \r\n        You can enable or disable the autostart function in your app.\r\n    ",
   "cordova": {
     "id": "cordova-plugin-autostart",
