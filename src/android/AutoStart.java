@@ -32,9 +32,10 @@ import android.content.pm.PackageManager;
 import android.content.ComponentName;
 
 public class AutoStart extends CordovaPlugin {
-    
+
     public static final String PREFS = "autostart";
-    public static final String CLASS_NAME = "class";
+    public static final String ACTIVITY_CLASS_NAME = "class";
+    public static final String SERVICE_CLASS_NAME = "service";
 
     /**
      * Executes the request.
@@ -52,31 +53,46 @@ public class AutoStart extends CordovaPlugin {
             CallbackContext callback) throws JSONException {
 
         if ( action.equalsIgnoreCase("enable") ) {
-            setAutoStart(true);
+            enableAutoStart(cordova.getActivity().getLocalClassName(), false);
+            return true;
+        } else if ( action.equalsIgnoreCase("enableService") ) {
+            final String serviceClassName = args.getString(0);
+            enableAutoStart(serviceClassName, true);
             return true;
         } else if ( action.equalsIgnoreCase("disable") ) {
-            setAutoStart(false);
+            disableAutoStart();
             return true;
         }
         return false;
     }
 
-    private void setAutoStart(boolean enabled) {
+    private void enableAutoStart(final String className, boolean isService) {
+        if (className != null) {
+            setAutoStart(className, true, isService);
+        }
+    }
+
+    private void disableAutoStart() {
+        setAutoStart(null, false, false);
+    }
+
+    private void setAutoStart(final String className, boolean enabled, boolean isService) {
 
         Context context = cordova.getActivity().getApplicationContext();
         int componentState;
         SharedPreferences sp = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-        if ( enabled ) { 
+        if ( enabled ) {
             componentState = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
-            // Store the class name of your main activity for AppStarter
-            editor.putString(CLASS_NAME, cordova.getActivity().getLocalClassName()); 
-        }
-        else{
+            // Store the class name of your service or main activity for AppStarter
+            final String preferenceKey = isService ? SERVICE_CLASS_NAME : ACTIVITY_CLASS_NAME;
+            editor.putString(preferenceKey, className);
+        } else {
             componentState = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-            editor.remove(CLASS_NAME);
+            editor.remove(ACTIVITY_CLASS_NAME);
+            editor.remove(SERVICE_CLASS_NAME);
         }
-        editor.commit();	
+        editor.commit();
         // Enable or Disable BootCompletedReceiver
         ComponentName bootCompletedReceiver = new ComponentName(context, BootCompletedReceiver.class);
         PackageManager pm = context.getPackageManager();

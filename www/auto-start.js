@@ -1,6 +1,6 @@
 /*
     Author: Toni Korin
-	
+
 	Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -22,7 +22,7 @@
 var exec    = require('cordova/exec');
 
 /**
- * Activates the automatic start of your app 
+ * Activates the automatic start of your app
  * after the reboot of the device
  */
 exports.enable = function () {
@@ -30,7 +30,15 @@ exports.enable = function () {
 };
 
 /**
- * Deactivates the automatic start of your app 
+ * Activates the automatic start of an arbitrary (exported) service
+ * after the reboot of the device
+ */
+exports.enableService = function (serviceClassName) {
+    cordova.exec(null, null, 'AutoStart', 'enableService', [serviceClassName]);
+};
+
+/**
+ * Deactivates the automatic start of your app and service
  * after the reboot of the device
  */
 exports.disable = function () {
