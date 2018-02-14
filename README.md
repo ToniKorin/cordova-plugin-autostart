@@ -1,16 +1,20 @@
 # Autostart plugin #
-This [Cordova][cordova] plugin will start automatically your __Android__ app after the every boot or the auto-update of your application. You can enable or disable the autostart function in your app. The plugin is also compatible with [PhoneGap Build][PGB].
+This [Cordova][cordova] plugin will start automatically your __Android__ app or service after the every boot or the auto-update of your application. You can enable or disable the autostart function in your app. The plugin is also compatible with [PhoneGap Build][PGB].
 
 ## Supported Platforms ##
 - __Android__
 
 ## Usage ##
 
-#### Enable the automatic startup after the boot ####
+#### Enable the automatic startup of your app after the boot ####
 ```javascript
 cordova.plugins.autoStart.enable();
 ```
-#### Disable the automatic startup after the boot ####
+#### Enable the automatic startup of your service after the boot ####
+```javascript
+cordova.plugins.autoStart.enableService("yourServiceClassName");
+```
+#### Disable the automatic startup of your app and service after the boot ####
 This is the default action if you have never called the "enable" function.
 ```javascript
 cordova.plugins.autoStart.disable();
@@ -41,7 +45,7 @@ cordova plugin add cordova-plugin-autostart --searchpath path
 or to use the latest stable version:
 ```bash
 # ~~ stable version ~~
-cordova plugin add cordova-plugin-autostart@2.1.0
+cordova plugin add cordova-plugin-autostart@2.2.0
 ```
 
 To remove the plug-in, run the following command:
@@ -52,7 +56,7 @@ cordova plugin rm cordova-plugin-autostart
 #### PhoneGap Build ####
 Add the following xml line to your config.xml:
 ```xml
-<gap:plugin platform="android" name="cordova-plugin-autostart" version="2.1.0" source="npm"/>
+<gap:plugin platform="android" name="cordova-plugin-autostart" version="2.2.0" source="npm"/>
 ```
 
 ## Remarks ##
