@@ -12,8 +12,9 @@ export interface Window {
  *
  * */
 export interface AutoStartInterface {
-    enable  ():never;
-    disable ():never;
+    enable() : never;
+    enableService(id: string) : never;
+    disable() : never;
 }
 /**
  *

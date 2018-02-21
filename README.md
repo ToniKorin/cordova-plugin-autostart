@@ -3,6 +3,7 @@ This [Cordova][cordova] plugin will start automatically your __Android__ app or 
 
 ## Supported Platforms ##
 - __Android__
+- __macOS__
 
 ## Usage ##
 
@@ -10,10 +11,12 @@ This [Cordova][cordova] plugin will start automatically your __Android__ app or 
 ```javascript
 cordova.plugins.autoStart.enable();
 ```
+Not applicable in macOS.
 #### Enable the automatic startup of your service after the boot ####
 ```javascript
 cordova.plugins.autoStart.enableService("yourServiceClassName");
 ```
+In macOS, pass the bundle identifier of a helper application to launch it at startup.
 #### Disable the automatic startup of your app and service after the boot ####
 This is the default action if you have never called the "enable" function.
 ```javascript
@@ -23,9 +26,14 @@ cordova.plugins.autoStart.disable();
 #### Indication of automatic startup ####
 If the automatic startup has occured, the Android intent includes the attribute "cordova_autostart" with value true. See more instructions to utilize it at related plugins.
 
+#### macOS helper application
+Sandboxed macOS applications are not allowed to write arbitrary files, which means that they cannot register themselves as [Launch Agents](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html). Instead, Apple allows the registration of a helper application, embedded in the main app's bundle, to start on boot and launch the main app.
+
+The `enableService` and `disable` actions will register/unregister the helper application to launch on startup. It is the caller's responsibility to implement the helper app. See Apple's [documentation](https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLoginItems.html) for more details.
+
 ## Related plugins ##
-- [cordova-plugin-intent][plugin-intent] to check out the "cordova_autostart" from extras of Android intent, if your app has automatically started. See more details from [here][stackoverflow_2]. 
-- [cordova-android-movetasktoback][plugin-movetasktoback] to move your app to background 
+- [cordova-plugin-intent][plugin-intent] to check out the "cordova_autostart" from extras of Android intent, if your app has automatically started. See more details from [here][stackoverflow_2].
+- [cordova-android-movetasktoback][plugin-movetasktoback] to move your app to background
 - [cordova-plugin-background-mode][plugin-background-mode] to keep your app running
 
 ## Installation ##
@@ -61,7 +69,7 @@ Add the following xml line to your config.xml:
 
 ## Remarks ##
 1. Installation to the SD card will prevent the automatic start of your app after the boot. See more details from [here][stackoverflow_1].
-2. During the boot your app may start before it has no network connectivity. Your app have to take care of it e.g. using the cordova-plugin-network-information. 
+2. During the boot your app may start before it has no network connectivity. Your app have to take care of it e.g. using the cordova-plugin-network-information.
 
 ## History ##
 Check the [Change Log][changelog].
