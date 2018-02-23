@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-autostart" 
+        id="cordova-plugin-autostart"
         version="2.2.0">
 
     <name>Autostart</name>
 
     <description>
-        The application will be automatically started after the every boot and the automatic update of your application. 
+        The application will be automatically started after the every boot and the automatic update of your application.
         You can enable or disable the autostart function in your app.
     </description>
 
@@ -66,6 +66,21 @@
         <source-file src="src/android/PackageReplacedReceiver.java" target-dir="src/com/tonikorin/cordova/plugin/autostart" />
         <source-file src="src/android/AppStarter.java"            	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
         <source-file src="src/android/AutoStart.java"             	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
+    </platform>
+
+    <!-- macOS -->
+    <platform name="osx">
+        <config-file target="config.xml" parent="/*">
+          <feature name="AutoStart">
+            <param name="ios-package" value="AutoStart" />
+            <param name="onload" value="true" />
+          </feature>
+        </config-file>
+
+        <source-file src="src/osx/Autostart.swift" />
+        <framework src="ServiceManagement.framework" />
+
+        <dependency id="cordova-plugin-swift-support" version="~3.1.1"/>
     </platform>
 
 </plugin>
