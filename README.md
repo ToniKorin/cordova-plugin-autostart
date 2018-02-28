@@ -53,7 +53,7 @@ cordova plugin add cordova-plugin-autostart --searchpath path
 or to use the latest stable version:
 ```bash
 # ~~ stable version ~~
-cordova plugin add cordova-plugin-autostart@2.2.0
+cordova plugin add cordova-plugin-autostart@2.3.0
 ```
 
 To remove the plug-in, run the following command:
@@ -64,7 +64,7 @@ cordova plugin rm cordova-plugin-autostart
 #### PhoneGap Build ####
 Add the following xml line to your config.xml:
 ```xml
-<gap:plugin platform="android" name="cordova-plugin-autostart" version="2.2.0" source="npm"/>
+<gap:plugin platform="android" name="cordova-plugin-autostart" version="2.3.0" source="npm"/>
 ```
 
 ## Remarks ##
