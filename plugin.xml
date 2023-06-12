@@ -59,6 +59,7 @@
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
         </config-file>
 
         <source-file src="src/android/BootCompletedReceiver.java" 	target-dir="src/com/tonikorin/cordova/plugin/autostart" />
